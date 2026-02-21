@@ -13,7 +13,7 @@ def MaxPool2d(kernel_size):
 
 def ConvTranspose2d(in_channels, out_channels):
     return torch.nn.ConvTranspose2d(in_channels, out_channels, kernel_size=2, stride=2)
-
+uhuhu
 class UNet(torch.nn.Module):
     def __init__(self):
         super().__init__()
