@@ -4,7 +4,7 @@ import torch
 from torch.utils.data import Dataset
 
 class RoadDataset(Dataset):
-    def __init__(self,image_dir,mask_dir,size=256):
+    def __init__(self,image_dir,mask_dir=None,size=256):
         self.image_dir = image_dir
         self.mask_dir = mask_dir
         self.size = size
@@ -31,6 +31,7 @@ class RoadDataset(Dataset):
         mask = cv2.imread(mask_path, 0)
         mask = cv2.resize(mask, (self.size, self.size))
         mask = mask / 255.0
+        mask = (mask > 0.5)
         mask = torch.tensor(mask).unsqueeze(0).float()
 
         return image, mask
